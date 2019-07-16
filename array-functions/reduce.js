@@ -13,8 +13,3 @@ function reduce(array, reducer, initialValue) {
   }
   return accumulator
 }
-
-
-reduce(arr, function(accumulator, value) {
-    return accumulator + value;
-})

@@ -12,7 +12,3 @@ function reduceRight(array, reducer, initialValue) {
     }
     return accumulator
 }
-
-reduceRight(arr, function(accumulator, value) {
-    return accumulator + value;
-})
