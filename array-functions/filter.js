@@ -11,10 +11,13 @@ if (condition){
             newarrays+= array[i] + ' ';
         }
      }
-     return  newarrays;
+     array=newarrays;
+     return  array;
     }
  else {
-        return newarrays;
+        
+    array=[];
+    return  array;
         }
 
 }
