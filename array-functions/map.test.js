@@ -1,20 +1,43 @@
-console.log('TEST map');
+suite('map', function() {
+  test('add 10 to each array element', function() {
+    var array = [1, 2, 3];
 
-var array = [1, 2, 3];
+    var coeficient = 10;
 
-var coeficient = 10;
+    var result = map(array, function(value) {
+      return value * coeficient;
+    });
 
-var result = map(array, function(value) { return value * coeficient; });
-check(result, [10, 20, 30]);
+    checkArrays(result, [10, 20, 30]);
+  });
 
-array = ['1', '2', '3'];
+  test('enclose each array elemnt in <>', function() {
+    array = ['1', '2', '3'];
 
-var result = map(array, function(value) { return '<' + value + '>'; });
-check(result, ["<1>", "<2>", "<3>"]);
+    var result = map(array, function(value) {
+      return '<' + value + '>';
+    });
 
-array = [1, 2, 3];
+    checkArrays(result, ['<1>', '<2>', '<3>']);
+  });
 
-var result = map(array, function(value,  index, array) { 
-    return value + '-' + index + '-' + array; 
+  test('separate each array element with "-"', function() {
+    array = [1, 2, 3];
+
+    var result = map(array, function(value, index, array) {
+      return value + '-' + index + '-' + array;
+    });
+    checkArrays(result, ['1-0-1,2,3', '2-1-1,2,3', '3-2-1,2,3']);
+  });
+
+  test(
+    'input is not an array',
+    function() {
+      map(1);
+    },
+    function(error) {
+      check(error instanceof TypeError, true);
+      check(error.message, '1 is not an array');
+    }
+  );
 });
-check(result, ["1-0-1,2,3", "2-1-1,2,3", "3-2-1,2,3"]);
