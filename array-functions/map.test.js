@@ -1,20 +1,30 @@
-console.log('TEST map');
+suite('map', function () {
+    test('multiply by 10 all items', function () {
+        var array = [1, 2, 3];
 
-var array = [1, 2, 3];
+        var coeficient = 10;
 
-var coeficient = 10;
+        var result = map(array, function (value) { return value * coeficient; });
 
-var result = map(array, function(value) { return value * coeficient; });
-check(result, [10, 20, 30]);
 
-array = ['1', '2', '3'];
+        checkArrays(result, [10, 20, 30]);
+    });
 
-var result = map(array, function(value) { return '<' + value + '>'; });
-check(result, ["<1>", "<2>", "<3>"]);
+    test('wrap each element between <>', function () {
+        var array = ['1', '2', '3'];
 
-array = [1, 2, 3];
+        var result = map(array, function (value) { return '<' + value + '>'; });
+        checkArrays(result, ["<1>", "<2>", "<3>"]);
+    });
 
-var result = map(array, function(value,  index, array) { 
-    return value + '-' + index + '-' + array; 
+    test('concatenate value-index-array', function () {
+        var array = [1, 2, 3];
+
+        var result = map(array, function (value, index, array) {
+            return value + '-' + index + '-' + array;
+        });
+
+        checkArrays(result, ["1-0-1,2,3", "2-1-1,2,3", "3-2-1,2,3"]);
+    })
 });
-check(result, ["1-0-1,2,3", "2-1-1,2,3", "3-2-1,2,3"]);
+
