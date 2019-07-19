@@ -8,7 +8,7 @@ if (condition){
     for(var i=0;i<array.length;i++){
         
         if (array[i].length > condition){
-            newarrays += array[i] + ' ';
+            newarrays+= array[i] + ' ';
         }
      }
      array=newarrays;

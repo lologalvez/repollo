@@ -1,8 +1,4 @@
 function fill(array, value, start, end) {
-    
-    if (arguments.length === 0) throw TypeError('missing argument 0 when calling function fill')
-    if (!(array instanceof Array)) throw TypeError(array + ' is not an array');
-
 
     var i=0;
     var j=0;
@@ -16,13 +12,16 @@ function fill(array, value, start, end) {
           array[j]=value;
        
         }
+        
         return array;
-          
+        
+    
+        
     } 
 
     else if (start){
 
-        i=start;
+        i=start-1;
       
         for (i; i<array.length-1; i++){
             array[i]=value;
@@ -30,12 +29,16 @@ function fill(array, value, start, end) {
 
         return  array;
 
-    } else   
+    } else 
+    
         {
-        for (var i=0; i<array.length-1; i++){
-        
-            array[i]=value;
 
+        for (var i=0; i<array.length-1; i++){
+            
+            
+            array[i]=value;
+           
+         
         }
 
         return  array;
